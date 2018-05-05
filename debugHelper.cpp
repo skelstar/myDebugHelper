@@ -9,8 +9,15 @@
 
 debugHelper::debugHelper() {}
 
-void debugHelper::init(uint16_t options) {
-	_options = options;
+void debugHelper::init() {
+}
+
+void debugHelper::addOption(uint16_t option, char* name) {
+
+}
+
+void debugHelper::setFilter(uint16_t options) {
+    _options = options;
 }
 
 // void debugHelper::addOption(char[10] name, myDebugType_t option) {

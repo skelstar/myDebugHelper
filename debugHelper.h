@@ -2,6 +2,7 @@
 #define DebugHelper_h
 
 #include <Arduino.h>
+#include <ArduinoSTL.h>
 
 typedef enum
 {
@@ -23,12 +24,16 @@ class debugHelper {
 	
 	public:
 		debugHelper();
-		void init(uint16_t options);
+		void init();
+		void addOption(uint16_t option, char* name);
+		void setFilter(uint16_t options);
 		void print(myDebugType_t option, const char* format ...);
+
 	private:
 		uint16_t _options = 0;
 		char _str[200];
-
+		uint16_t debugOptionCodes[10];
+		std::vector<char> v[10];
 
 };
 #endif

@@ -17,13 +17,18 @@ debugHelper debug;
 
 void setup() {
 
+	Serial.begin(9600);
+	Serial.println("\nReady");
+
 	debug.init();
 	debug.addOption(STARTUP, "STARTUP");
-	debug.setFilter(d_DEBUG | d_STARTUP | d_COMMUNICATION);
+	debug.addOption(WARNING, "WARNING");
+	//debug.setFilter(d_DEBUG | d_STARTUP | d_COMMUNICATION);
+	debug.setFilter(STARTUP | WARNING);
 
-    Serial.begin(9600);
-
-	debug.print(d_STARTUP, compile_date);
+	debug.print(STARTUP, "%s \n", compile_date);
+	debug.print(WARNING, "this is a warning \n");
+	debug.print(DEBUG, "this won't be printed");
 }
 
 void loop () {

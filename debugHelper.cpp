@@ -10,13 +10,18 @@
 debugHelper::debugHelper() {}
 
 void debugHelper::init() {
+	for (int i=0; i<OPTION_NAMES_ARRAY_SIZE; i++) {
+		optionNames[i] = '\0';
+	}
 }
 
 void debugHelper::addOption(uint16_t option, char* name) {
-    optionNames[option] = name;
+	optionNames[option] = name;
 }
 
 void debugHelper::setFilter(uint16_t options) {
+	Serial.printf("Options %d\n", options);
+	delay(100);
     _options = options;
 }
 
@@ -30,8 +35,12 @@ void debugHelper::print(uint16_t option, const char* format ...) {
 
         if (_options)
         {
-            Serial.print(optionNames[option]);
-            Serial.print(": ");
+			// if (optionNames[option] == '\0') {
+			// 	Serial.printf("ERROR: Option not accounted for! \n");
+			// }
+			// else {
+	            Serial.printf("%s: ", optionNames[option]);
+	        // }
         }
 
         Serial.print(_str);

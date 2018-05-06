@@ -23,7 +23,6 @@ void setup() {
 	debug.init();
 	debug.addOption(STARTUP, "STARTUP");
 	debug.addOption(WARNING, "WARNING");
-	//debug.setFilter(d_DEBUG | d_STARTUP | d_COMMUNICATION);
 	debug.setFilter(STARTUP | WARNING);
 
 	debug.print(STARTUP, "%s \n", compile_date);

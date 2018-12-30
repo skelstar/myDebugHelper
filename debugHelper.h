@@ -3,14 +3,15 @@
 
 #include <Arduino.h>
 
-#define OPTION_NAMES_ARRAY_SIZE	20
+#define OPTION_NAMES_ARRAY_SIZE	64
 
 class debugHelper {
-	
+
 	public:
 		debugHelper();
 		void init();
-		void addOption(uint16_t option, char* name);
+		void addOption(uint16_t option, const char* name);
+		bool hasOption(uint16_t option);
 		void setFilter(uint16_t options);
 		void print(const char* optionByName, const char* format ...);
 		void print(uint16_t option, const char* format ...);
@@ -21,4 +22,3 @@ class debugHelper {
 		char* optionNames[OPTION_NAMES_ARRAY_SIZE];
 };
 #endif
-

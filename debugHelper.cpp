@@ -15,8 +15,17 @@ void debugHelper::init() {
 	}
 }
 
-void debugHelper::addOption(uint16_t option, char* name) {
-	optionNames[option] = name;
+void debugHelper::addOption(uint16_t option, const char* name) {
+	if (option <= OPTION_NAMES_ARRAY_SIZE) {
+		optionNames[option] = (char*) name;
+	}
+	else {
+		Serial.printf("ERROR: too many options added! \n");
+	}
+}
+
+bool debugHelper::hasOption(uint16_t option) {
+	return optionNames[option] != '\0';
 }
 
 void debugHelper::setFilter(uint16_t options) {
